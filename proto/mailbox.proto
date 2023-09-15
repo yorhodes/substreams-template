@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package eth.mailbox.v1;
+
+message Dispatches {
+  repeated Dispatch dispatches = 1;
+}
+
+message Dispatch {
+  string sender = 1;
+  uint32 destination = 2;
+  string recipient = 3;
+  string body = 4;
+  uint64 ordinal = 5;
+  string trx_hash = 6;
+}

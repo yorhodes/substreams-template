@@ -8,7 +8,7 @@ imports:
 
 protobuf:
   files:
-    - erc721.proto
+    - mailbox.proto
   importPaths:
     - ./proto
 
@@ -18,29 +18,29 @@ binaries:
     file: ./target/wasm32-unknown-unknown/release/substreams.wasm
 
 modules:
-  - name: map_transfers
+  - name: map_dispatches
     kind: map
     initialBlock: 12287507
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:eth.erc721.v1.Transfers
+      type: proto:eth.mailbox.v1.Dispatches
 
-  - name: store_transfers
+  - name: store_dispatches
     kind: store
     initialBlock: 12287507
-    updatePolicy: add
-    valueType: int64
+    updatePolicy: set
+    valueType: string
     inputs:
-      - map: map_transfers
+      - map: map_dispatches
 
   - name: db_out
     kind: map
     initialBlock: 12287507
     inputs:
       - source: sf.substreams.v1.Clock
-      - map: map_transfers
-      - store: store_transfers
+      - map: map_dispatches
+      - store: store_dispatches
         mode: deltas
     output:
       type: proto:sf.substreams.sink.database.v1.DatabaseChanges
