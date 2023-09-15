@@ -20,7 +20,7 @@ binaries:
 modules:
   - name: map_dispatches
     kind: map
-    initialBlock: 12287507
+    initialBlock: 17000000
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
@@ -28,7 +28,7 @@ modules:
 
   - name: store_dispatches
     kind: store
-    initialBlock: 12287507
+    initialBlock: 18100000
     updatePolicy: set
     valueType: string
     inputs:
@@ -36,7 +36,7 @@ modules:
 
   - name: db_out
     kind: map
-    initialBlock: 12287507
+    initialBlock: 18100000
     inputs:
       - source: sf.substreams.v1.Clock
       - map: map_dispatches

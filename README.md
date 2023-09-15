@@ -56,6 +56,12 @@ The resulting WASM artifact will be found at `./target/wasm32-unknown-unknown/re
 
 ## Run your Substreams
 
+# Hyperlane Test
+
+```bash
+substreams run -e mainnet.eth.streamingfast.io:443 substreams.yaml map_dispatches --start-block 17000000 --stop-block +1100000 --output json --production-mode
+```
+
 We're now ready to run our example Substreams!
 
 > Don't forget to be at the root of the project to run the following commands
